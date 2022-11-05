@@ -1,0 +1,45 @@
+grid_map_topic: /grid_map
+
+grid_map_visualizations:
+
+ - name: test_bed
+   type: occupancy_grid
+   params:
+    layer: OG
+    data_min: 0
+    data_max: 1000
+
+ - name: test_planner_obstacles
+   type: occupancy_grid
+   params:
+    layer: obstacles
+    data_min: 0
+    data_max: 10
+
+ - name: test_planner_lanelet
+   type: occupancy_grid
+   params:
+    layer: lanelets
+    data_min: 0
+    data_max: 10
+
+ - name: test_planner_aggregate
+   type: occupancy_grid
+   params:
+    layer: aggregate
+    data_min: 0
+    data_max: 10
+
+ - name: test_planner_aggregate_t0
+   type: occupancy_grid
+   params:
+    layer: aggregates_t_0
+    data_min: 0
+    data_max: 10
+
+ - name: test_planner_dynamic_t0
+   type: occupancy_grid
+   params:
+    layer: dynamic_t_0
+    data_min: 0
+    data_max: 10

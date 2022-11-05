@@ -1,0 +1,17 @@
+<launch>
+ <arg name="config_file" default="scenarios.yaml" />
+
+ <!-- launch the test_bed with some input arguments -->
+ <node pkg="hybrid_a_star" type="test_bed" name="test_bed" output="screen" args="--command_line 0">
+  <rosparam command="load" file= "$(find hybrid_a_star)/config/test_bed.yaml" />
+  <rosparam param="experiment/config_file" subst_value="True">$(find hybrid_a_star)/config/$(arg config_file)</rosparam> 
+ </node>
+ 
+ <!-- Launch the grid map visualizer -->
+ <node pkg="grid_map_visualization" type="grid_map_visualization" name="grid_map_visualization" output="screen">
+    <rosparam command="load" file="$(find hybrid_a_star)/config/grid_map_visualization.yaml" />
+ </node>
+
+ <!-- Launch the rviz using the saved config file -->
+ <node pkg="rviz" type="rviz" name="rviz" args="-d $(find hybrid_a_star)/config/test_bed.rviz" />
+</launch>

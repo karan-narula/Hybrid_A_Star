@@ -1,0 +1,75 @@
+planner: 
+  precompute: true                           #allow precomputation with 2D planner? (True or False)
+  oneshot: true                              #attempt oneshot at low frequency
+  max_oneshot_interval: 200
+  allow_reverse: false                       #allow the vehicle to go backwards? (True or False)
+  chord_factor: 1.0                          #factor to scale default chord length whose value depends on the resolution
+  time_incr: 0.5                             #time increment during node expansion
+  max_iter: 10000000                         #number of iterations to search before call it quits
+  dvwnf: 0                                   #default value to take if the precomputed has not evaluted a cell
+  steering_actions: [-10,0,10]               #list of steering actions for hybrid a_star (in degrees)	
+
+vehicle_dyn_constraints:
+  max_accel: 10.0                            #maximum acceleration & deceleration limit
+  max_steering_vel: 10.0                     #maximum change in steering angle limit
+
+experiment:
+  scenario: dead end                         #name of the scenario to simulate
+  headings: [90,180]                         #of starting and goal node (in degrees)
+ 
+threshold:                                   #for determining when the goal node is reached
+  heading: 3.0                               #in degrees
+  distance: 0.1                              #in metres
+
+penalties:                                   #unit in number of diagonals of the cells
+  change_in_dir: 0.0                         #for change in direction (forward to reverse or vice versa)
+  change_in_head: 0.0                        #for change in heading angle
+  change_in_steer_index: 0.0                 #punishes when steering action is changed
+  reversing: 0.0                             #punishes if reversing (prefer forward paths)
+  change_in_velocity: 0.0                    #punishes when there is a change in velocity
+  change_in_steering: 0.0                    #punishes when there is a change in steering angle
+
+vehicle:                                     #dimension of vehicle in metres
+  length: 2.2
+  width: 1.8
+  wheelbase: 2.0
+
+smoothing:
+  num_iter: 1000
+  min_turn_r: 20
+  step_size: 0.05
+  max_obs_dist: 5
+  weights: [1.0,0.0,1.0]
+
+visualisation:                               #for points, lines and arrows that are shown in rviz
+  points:
+    width: 0.4
+    height: 0.4
+    r: 1.0
+    g: 0.0
+    b: 0.0
+  lines:
+    line_width: 0.1
+    dijsktra:
+      r: 0.0
+      g: 0.0
+      b: 1.0    
+    vani_a_star:
+      r: 0.0
+      g: 1.0
+      b: 0.0
+    hybrid_a_star:
+      r: 1.0
+      g: 0.0
+      b: 1.0
+    smoothed_hybrid:
+      r: 0.1
+      g: 0.4
+      b: 0.35
+    arrows:
+      scale_x: 3.0
+      scale_y: 1.0
+      scale_z: 1.0
+      r: 1.0
+      g: 0.0
+      b: 0.0

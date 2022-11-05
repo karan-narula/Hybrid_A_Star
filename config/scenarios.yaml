@@ -1,0 +1,61 @@
+#Default scenario parameters if not present in the specified example
+default: {
+        origin: [0,0],
+        resolution: [1,1,5],      #of the cell (cell height, cell width, heading resolution)
+        size: [100,100],        #number of rows x number of columns
+        obs_loc: [],            #give range of indices where obstacles are present
+        start_ind: [0,0,-90],   #location of starting position (row number, column number, heading in degrees)
+        goal_ind: [99,99,-90]   #location of gloal position given in the same format as above 
+        }
+
+#empty grid of small size (similar to the one shown in notebook)
+empty grid: {
+        resolution: [0.05,0.05,1],
+        size: [40,24],
+        obs_loc: [],
+        start_ind: [39,23,-90],
+        goal_ind: [20,12,90]
+        }
+
+#empty grid of larger size (similar to the one shown in notebook)
+empty grid large: {
+        obs_loc: [],
+        start_ind: [99,99,-90],
+        goal_ind: [50,50,90]
+        }
+
+#dead end scenario with wall-like obstacles (similar to the one shown in notebook)
+dead end: {
+        obs_loc: [
+                [25,25,25,75], 
+                [75,75,25,75], 
+                [25,75,75,75]
+                ],
+        start_ind: [50,50,90],
+        goal_ind: [50,88,90]
+        }
+
+#dead end scenario with wall-like obstacles with another dead end miniature on top
+dead end with mini: {
+        obs_loc: [
+                [25,25,25,75], 
+                [75,75,25,75], 
+                [25,75,75,75],
+                [40,40,45,55],
+                [25,40,45,45]
+                ],
+        start_ind: [50,50,90],
+        goal_ind: [50,88,90]
+        }
+
+#smaller version of the above
+dead end small: {
+        size: [60,40],
+        obs_loc: [
+                [15,15,10,30], 
+                [45,45,10,30], 
+                [15,45,30,30]
+                ],      
+        start_ind: [30,20,0],
+        goal_ind: [30,35,90]
+        }

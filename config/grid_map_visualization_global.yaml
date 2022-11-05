@@ -1,0 +1,9 @@
+grid_map_topic: /glob_grid_map
+
+grid_map_visualizations:
+ - name: test_planner_glob_obstacles 
+   type: occupancy_grid
+   params:
+    layer: obstacles
+    data_min: 0
+    data_max: 10
